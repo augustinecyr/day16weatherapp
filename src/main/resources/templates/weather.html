@@ -10,7 +10,22 @@
 
 <body>
     <h1>Weather for <span data-th-text="${city}"></span></h1>
-    
+
+    <div data-th-each="w: ${weather}">
+        <table>
+            <tr>
+                <td style="width: 30%;">
+                    <img data-th-src="@{http://openweathermap.org/img/wn/{icon}@2x.png(icon=${w.icon})}" alt="">
+                </td>
+                <td>
+                    <strong data-th-text="${w.main}"></strong>
+                    - 
+                    <span data-th-text="${w.description}"></span>
+                </td>
+            </tr>
+        </table>
+
+    </div>
 </body>
 
 </html>
