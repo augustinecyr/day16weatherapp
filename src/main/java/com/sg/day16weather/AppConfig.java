@@ -1,4 +1,5 @@
 package com.sg.day16weather;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,7 @@ public class AppConfig {
     private String redisPassword;
 
     @Bean("redislab")
-    public RedisTemplate<String,String>initRedisTemplate() {
+    public RedisTemplate<String, String> initRedisTemplate() {
 
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
@@ -41,7 +42,7 @@ public class AppConfig {
         JedisConnectionFactory jedisFac = new JedisConnectionFactory(redisConfig, jedisConfig);
         jedisFac.afterPropertiesSet();
 
-        RedisTemplate<String,String> redisTemplate = new RedisTemplate<>();
+        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisFac);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new StringRedisSerializer());

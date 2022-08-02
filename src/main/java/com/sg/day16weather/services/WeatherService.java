@@ -41,42 +41,41 @@ public class WeatherService {
         System.out.printf(">>> city: %s\n", city);
 
         if (opt.isEmpty()) {
-            
-            
+
             System.out.println("Getting weather from OpenWeatherMap");
 
-            try{
-            // create url with query string
-            String url = UriComponentsBuilder.fromUriString(URL)
-                    .queryParam("q", city) // get from POSTMAN
-                    .queryParam("appid", key) // get from POSTMAN
-                    .toUriString();
-            // GET request
-            RequestEntity<Void> req = RequestEntity.get(url).build();
+            try {
+                // create url with query string
+                String url = UriComponentsBuilder.fromUriString(URL)
+                        .queryParam("q", city) // get from POSTMAN
+                        .queryParam("appid", key) // get from POSTMAN
+                        .toUriString();
+                // GET request
+                RequestEntity<Void> req = RequestEntity.get(url).build();
 
-            RestTemplate template = new RestTemplate();
-            ResponseEntity<String> resp;
-            
-            resp = template.exchange(req, String.class);
+                RestTemplate template = new RestTemplate();
+                ResponseEntity<String> resp;
 
-            // condition to check if resp is successful
+                resp = template.exchange(req, String.class);
 
-            /*
-             * if (resp.getStatusCodeValue() != 200) {
-             * System.err.println("Error");
-             * return Collections.emptyList();
-             * }
-             */
+                // condition to check if resp is successful
 
-            payload = resp.getBody();
-            System.out.println("payload: " + payload);
+                /*
+                 * if (resp.getStatusCodeValue() != 200) {
+                 * System.err.println("Error");
+                 * return Collections.emptyList();
+                 * }
+                 */
 
-            weatherRepo.save(city, payload);
-             } catch (Exception ex){ 
+                payload = resp.getBody();
+                System.out.println("payload: " + payload);
+
+                weatherRepo.save(city, payload);
+            } catch (Exception ex) {
                 System.err.printf("Error: %s\n", ex.getMessage());
                 return Collections.emptyList();
-             }
-             
+            }
+
         } else {
             payload = opt.get();
             System.out.printf(">>>> cache: %s\n", payload);

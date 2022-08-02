@@ -20,7 +20,7 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherSvc;
 
-    //step 1
+    // step 1
     @GetMapping
     public String getWeather(Model model, @RequestParam String city) {
         weatherSvc.getWeather(city);
@@ -30,6 +30,5 @@ public class WeatherController {
         return "weather";
 
     }
-    
 
 }
