@@ -30,5 +30,6 @@ public class WeatherController {
         return "weather";
 
     }
+    
 
 }

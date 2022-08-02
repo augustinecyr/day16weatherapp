@@ -11,3 +11,7 @@
 6. Conversion of payload to JSON
 7. Reading the json Object
 
+#### Part two of Weather Application
+1. Add AppConfig file for redis
+2. Create a repository & export redis password
+3. Create a cache
