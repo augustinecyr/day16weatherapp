@@ -27,7 +27,7 @@ public class AppConfig {
     private String redisPassword;
 
     @Bean("redislab")
-    public RedisTemplate<String,Object>initRedisTemplate() {
+    public RedisTemplate<String,String>initRedisTemplate() {
 
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
@@ -41,7 +41,7 @@ public class AppConfig {
         JedisConnectionFactory jedisFac = new JedisConnectionFactory(redisConfig, jedisConfig);
         jedisFac.afterPropertiesSet();
 
-        RedisTemplate<String,Object> redisTemplate = new RedisTemplate<>();
+        RedisTemplate<String,String> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisFac);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new StringRedisSerializer());
