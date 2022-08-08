@@ -7,16 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <style>
+    
         body{
-            display: flex;
-            justify-content:center ;
+           position: absolute;
+            text-align: center;
             align-items: center;
+            align-self: center;
+            padding-left: 40%;
         }
     </style>
 </head>
 
 
 <body>
+    <div>
+        <h2><marquee>---For testing purposes only---</marquee></h2>
+        <a href="index.html">Home</a>
+    </div>
+    <br>
     <h1>Weather for <span data-th-text="${city}"></span></h1>
     
     <div data-th-each="w: ${weather}">
